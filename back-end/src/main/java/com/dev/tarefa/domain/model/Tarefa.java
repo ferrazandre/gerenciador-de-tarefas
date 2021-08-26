@@ -1,4 +1,4 @@
-package com.dev.tarefa.model;
+package com.dev.tarefa.domain.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,8 +20,11 @@ public class Tarefa implements Serializable {
 
 	@Column
 	private String description;
+	@Column
 	private boolean done;
+	@Column
 	private LocalDateTime createdDate;
+	@Column
 	private LocalDateTime doneDate;
 
 	public Tarefa() {
