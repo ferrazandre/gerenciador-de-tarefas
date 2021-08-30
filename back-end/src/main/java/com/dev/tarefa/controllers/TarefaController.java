@@ -27,7 +27,7 @@ public class TarefaController {
 
 	@PostMapping
 	public ResponseEntity<TarefaDTO> save(@RequestBody TarefaDTO dto) {
-		service.save(dto);
+		dto = service.save(dto);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(dto.getId()).toUri();
 		return ResponseEntity.created(uri).body(dto);
 	}
@@ -47,12 +47,12 @@ public class TarefaController {
 	@GetMapping("/{id}")
 	public ResponseEntity<TarefaDTO> findById(@PathVariable Long id) {
 		TarefaDTO dto = service.findById(id);
-		return dto == null ? ResponseEntity.ok().body(dto) : ResponseEntity.notFound().build();
+		return dto != null ? ResponseEntity.ok().body(dto) : ResponseEntity.notFound().build();
 	}
 
-	@PutMapping("{id}/finished")
+	@PutMapping("/{id}/finished")
 	public ResponseEntity<TarefaDTO> setTarefa(@PathVariable Long id) {
 		TarefaDTO dto = service.setTarefa(id);
-		return dto == null ? ResponseEntity.ok().body(dto) : ResponseEntity.notFound().build();
+		return dto != null ? ResponseEntity.ok().body(dto) : ResponseEntity.notFound().build();
 	}
 }

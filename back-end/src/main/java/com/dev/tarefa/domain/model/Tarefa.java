@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 @Entity
 public class Tarefa implements Serializable {
 
@@ -20,11 +22,16 @@ public class Tarefa implements Serializable {
 
 	@Column
 	private String description;
+
 	@Column
 	private boolean done;
+
 	@Column
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime createdDate;
+
 	@Column
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDateTime doneDate;
 
 	public Tarefa() {
