@@ -28,13 +28,13 @@
         </tr>
       </thead>
       <tbody *ngFor="let tarefa of tarefas">
-        <tr>
+        <tr class="{{tarefa.done ? 'table-success' : ''}}">
           <td>{{tarefa.id}}</td>
           <td>{{tarefa.description}}</td>
           <td>{{tarefa.createdDate}}</td>
           <td><div class="btn-group" role="group" aria-label="Basic example">
-                <button type="button" class="btn btn-dark">Done</button>
-                <button type="button" class="btn btn-danger">Delete</button>
+                <button type="button" [disabled]="tarefa.done" (click)="done(tarefa)" class="btn btn-dark">Done</button>
+                <button type="button" (click)="delete(tarefa.id)" class="btn btn-danger">Delete</button>
               </div>
           </td>
         </tr>

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Tarefa } from './tarefa';
 import { Observable} from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { $ } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -18,5 +19,13 @@ export class TarefaService {
   }
   listAll() : Observable<Tarefa[]>{
     return this.htpp.get<Tarefa[]>(this.apiURL);
+  }
+
+  done(id: number) : Observable<Tarefa>{
+    return this.htpp.put<Tarefa>(`${this.apiURL}/${id}/finished`, {});
+  }
+
+  deletar(id: number) : Observable<Tarefa>{
+    return this.htpp.delete<Tarefa>(`${this.apiURL}/${id}`);
   }
 }

@@ -17,6 +17,9 @@ export class AppComponent implements OnInit{
     private service: TarefaService
   ){}
   ngOnInit(){
+    this.listarTasks();
+  }
+  listarTasks(){
     this.service.listAll().subscribe(tarefaList => this.tarefas = tarefaList)
   }
   submit(){
@@ -27,5 +30,18 @@ export class AppComponent implements OnInit{
                   this.tarefas.push(savedTarefa)
                   this.form.reset()
                 })
+  }
+  delete(id: number){
+    this.service.deletar(id).subscribe({
+      next:(response)=> this.listarTasks()
+    })
+  }
+  done(tarefa: Tarefa){
+    this.service.done(tarefa.id).subscribe({
+      next:(tarefaAtualizada) => {
+        tarefa.done = tarefaAtualizada.done
+        tarefa.doneDate = tarefaAtualizada.doneDate
+      }
+    })
   }
 }
