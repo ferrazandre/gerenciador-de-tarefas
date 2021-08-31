@@ -1,7 +1,13 @@
 # GTask
 <tr>
 Aplicação para gerenciamento de tarefas
-Tendo a opção de adiconar, excluir e finalizar uma tarefa
+ 
+ 
+ 
+ 
+ 
+ 
+ Tendo as opções de adiconar, excluir e finalizar uma tarefa
  
  ## 🛠 Tecnologias Usadas
  As seguintes ferramentas foram usadas na construção do projeto:
